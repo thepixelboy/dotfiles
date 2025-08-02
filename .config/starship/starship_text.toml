@@ -1,0 +1,203 @@
+format = """\
+[╭╴](fg:style)\
+$os\
+$username\
+$git_branch\
+$git_status\
+$shell\
+(\
+    $directory\
+)\
+$cmd_duration\
+(\
+    using \
+    $dotnet\
+    $lua\
+    $nodejs\
+    $php\
+    $python\
+    $ruby\
+)
+[╰─](fg:style)$character\
+"""
+add_newline = true
+palette = "normal"
+
+[palettes.normal]
+shell = "#29DBF2"
+os = "#16f4d0"
+os_admin = "#e4ff1a"
+directory = "#9ffff5"
+time = "#bdfffd"
+git = "#f17f29"
+git_status = "#DFEBED"
+
+dotnet = "#512bd4"
+lua = "#000080"
+node = "#417e38"
+php = "#4F5B93"
+python = "#ffd343"
+rails = "#D30001"
+
+duration = "#ce4257"
+text_color = "#EDF2F4"
+text_light = "#26272A"
+
+[username]
+style_user = "bold os"
+style_root = "bold os_admin"
+format = " [$user](fg:$style) "
+disabled = false
+show_always = true
+
+[os]
+disabled = false
+style = "bg:red fg:crust"
+
+[os.symbols]
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+EndeavourOS = ""
+Fedora = "󰣛"
+Gentoo = "󰣨"
+Kali = ""
+Linux = "󰌽"
+Macos = "󰀵"
+Manjaro = ""
+Mint = "󰣭"
+NixOS = ""
+Pop = ""
+Raspbian = ""
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+SUSE = ""
+Ubuntu = "󰕈"
+Unknown = "󰆍"
+Windows = "󰍲"
+
+[shell]
+disabled = false
+format = '[ $indicator: ]($style)'
+bash_indicator = "bash"
+fish_indicator = "fish"
+zsh_indicator = "zsh"
+powershell_indicator = "powershell"
+pwsh_indicator = "pwsh"
+ion_indicator = "ion"
+elvish_indicator = "elvish"
+tcsh_indicator = "tcsh"
+xonsh_indicator = "xonsh"
+cmd_indicator = "cmd"
+nu_indicator = "nu"
+unknown_indicator = ""
+style = "fg:shell"
+
+[character]
+disabled = false
+success_symbol = "[❯](bold fg:style)"
+error_symbol = "[❯](bold fg:red)"
+vimcmd_symbol = "[❮](bold fg:style)"
+vimcmd_replace_one_symbol = "[❮](bold fg:lavender)"
+vimcmd_replace_symbol = "[❮](bold fg:lavender)"
+vimcmd_visual_symbol = "[❮](bold fg:yellow)"
+
+[directory]
+format = "[at]($style) [$path](bold $style)[$read_only]($read_only_style) "
+truncation_length = 3
+style = "fg:directory"
+read_only_style = "fg:directory"
+repo_root_style = "fg:directory bold"
+before_repo_root_style = "fg:directory"
+truncation_symbol = "…/"
+truncate_to_repo = false
+read_only ="  "
+home_symbol = ""
+
+[time]
+disabled = true
+format = "at [󱑈 $time]($style)"
+time_format = "%H:%M"
+style = "bold fg:time"
+
+[cmd_duration]
+format = "took [󱫑 $duration]($style) "
+style = "bold fg:duration"
+min_time = 500
+
+[git_branch]
+format = "[$symbol $branch]($style) "
+style = "bold fg:git"
+symbol = ""
+
+[git_status]
+# format = "[ $all_status$ahead_behind ]($style)"
+format = '([$ahead_behind]($style) )([$all_status]($style) )'
+style = "fg:git"
+stashed = "*${count}"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+up_to_date = ""
+diverged = "⇡${ahead_count}⇣${behind_count}"
+conflicted = "=${count}"
+deleted = "×${count}"
+renamed = "»${count}"
+modified = "!${count}"
+staged = "+${count}"
+untracked = "?${count}"
+ignore_submodules = false
+disabled = false
+
+[docker_context]
+disabled=true
+symbol = " "
+
+[package]
+disabled=true
+
+[fill]
+symbol = " "
+
+[dotnet]
+disabled =  false
+format = "[](fg:dotnet)[$symbol( $version)]($style)[](fg:dotnet)"
+heuristic = false
+style = "bg:dotnet fg:text_color"
+symbol = ".NET"
+
+[lua]
+disabled = false
+format ="[](fg:lua)[$symbol( $version)]($style)[](fg:lua)"
+style = "bg:lua fg:text_color"
+symbol = ""
+
+[nodejs]
+disabled = false
+format = "[](fg:node)[$symbol( $version)]($style)[](fg:node)"
+style = "bg:node fg:text_color"
+symbol = ""
+version_format = "${raw}"
+
+[php]
+disabled = false
+format = "[](fg:php)[$symbol( $version)]($style)[](fg:php)"
+style = "bg:php fg:text_color"
+symbol = ""
+
+[python]
+disabled = false
+format = "[](fg:python)[$symbol( $pyenv_prefix)( $version)( $virtualenv)]($style)[](fg:python)"
+symbol = ""
+style = "bg:python fg:text_light"
+version_format = "${raw}"
+
+[ruby]
+disabled = false
+format = "[](fg:rails)[$symbol( $version)]($style)[](fg:rails)"
+style = "bg:rails fg:text_color"
+symbol = ""
+version_format = "${raw}"

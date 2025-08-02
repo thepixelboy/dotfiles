@@ -1,0 +1,270 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+command_timeout = 2000
+
+format = """
+$os\
+$username\
+$hostname\
+$shell\
+$sudo\
+$directory\
+$git_branch\
+$git_status\
+$dotnet\
+$lua\
+$nodejs\
+$php\
+$python\
+$ruby\
+$package\
+$docker_context\
+$container\
+$jobs\
+$time\
+$cmd_duration\
+$status\
+$line_break\
+$character\
+"""
+
+palette = 'catppuccin_mocha'
+
+[palettes.default]
+color_ok = 'bright-green'
+color_danger = 'bright-red'
+color_caution = 'bright-yellow'
+color_os = 'red'
+color_username = 'red'
+color_directory = 'yellow'
+color_git = 'cyan'
+color_git_added = 'bright-green'
+color_git_deleted = 'bright-red'
+color_env = 'blue'
+color_kubernetes = 'purple'
+color_docker = 'blue'
+color_shell = ''
+color_container = ''
+color_other = ''
+color_time = ''
+color_duration = ''
+color_vimcmd_ok = 'green'
+color_vimcmd_replace = 'purple'
+color_vimcmd_visual = 'yellow'
+
+[palettes.catppuccin_mocha]
+color_ok = '#a6e3a1'
+color_danger = '#f38ba8'
+color_caution = '#d79921'
+color_os = '#f38ba8'
+color_username = '#f38ba8'
+color_hostname = '#89b4fa'
+color_directory = '#fab387'
+color_git = '#f9e2af'
+color_env = '#a6e3a1'
+color_docker = '#7dc4e4'
+color_shell = '#b4befe'
+color_container = '#7dc4e4'
+color_other = '#cdd6f4'
+color_time = '#b4befe'
+color_duration = '#b4befe'
+color_vimcmd_ok = '#a6e3a1'
+color_vimcmd_replace = '#b4befe'
+color_vimcmd_visual = '#f9e2af'
+
+[os]
+disabled = false
+style = "fg:color_os"
+format = '[$symbol]($style)'
+
+[os.symbols]
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+EndeavourOS = ""
+Fedora = "󰣛"
+Gentoo = "󰣨"
+Kali = ""
+Linux = "󰌽"
+Macos = "󰀵"
+Manjaro = ""
+Mint = "󰣭"
+NixOS = ""
+Pop = ""
+Raspbian = ""
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+SUSE = ""
+Ubuntu = "󰕈"
+Unknown = "󰆍"
+Windows = "󰍲"
+
+[username]
+show_always = true
+style_user = "fg:color_username"
+style_root = "bold fg:color_danger"
+format = '[ $user ]($style)'
+
+[hostname]
+ssh_only = true
+ssh_symbol = ""
+format = '[$ssh_symbol ](bold color_hostname)[on $hostname ](color_hostname)'
+trim_at = '.domain'
+disabled = false
+
+[shell]
+disabled = false
+format = '[ $indicator]($style): '
+bash_indicator = "bash"
+fish_indicator = "fish"
+zsh_indicator = "zsh"
+powershell_indicator = "powershell"
+pwsh_indicator = "pwsh"
+ion_indicator = "ion"
+elvish_indicator = "elvish"
+tcsh_indicator = "tcsh"
+xonsh_indicator = "xonsh"
+cmd_indicator = "cmd"
+nu_indicator = "nu"
+unknown_indicator = ""
+style = "fg:color_shell"
+
+[directory]
+format = "[$path](bold $style)[$read_only]($read_only_style) "
+truncation_length = 3
+style = "fg:color_directory"
+read_only_style = "fg:color_directory"
+repo_root_style = "fg:color_directory bold"
+before_repo_root_style = "fg:color_directory"
+truncation_symbol = "…/"
+truncate_to_repo = false
+read_only ="  "
+
+[git_branch]
+symbol = ""
+style = "fg:color_git"
+format = '([$symbol $branch(:$remote_branch)]($style) )'
+only_attached = true
+ignore_branches = []
+truncation_length = 25
+truncation_symbol = "..."
+always_show_remote = true
+disabled = false
+
+[git_status]
+style = "fg:color_git"
+format = '([$ahead_behind]($style) )([$all_status]($style) )'
+stashed = "*${count}"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+up_to_date = ""
+diverged = "⇡${ahead_count}⇣${behind_count}"
+conflicted = "=${count}"
+deleted = "×${count}"
+renamed = "»${count}"
+modified = "!${count}"
+staged = "+${count}"
+untracked = "?${count}"
+ignore_submodules = false
+disabled = false
+
+[dotnet]
+symbol = '.NET'
+style = 'fg:color_env'
+format = '([$symbol( $version )]($style))'
+heuristic = false
+
+[lua]
+symbol = ""
+style = "fg:color_env"
+format ="([$symbol( $version )]($style))"
+
+[nodejs]
+symbol = ""
+style = "fg:color_env"
+format = '([$symbol( $version )]($style))'
+
+[php]
+symbol = ""
+style = "fg:color_env"
+format = '([$symbol( $version )]($style))'
+
+[python]
+symbol = ""
+style = "fg:color_env"
+format = '([$symbol( $version )( $virtualenv )]($style))'
+version_format = '${raw}'
+
+[ruby]
+symbol = ""
+style = "fg:color_env"
+format = '([$symbol( $version )]($style))'
+version_format = '${raw}'
+
+[package]
+disabled = false
+symbol = "󰏗"
+style = "fg:color_env"
+format = '([$symbol( $version )]($style))'
+
+[docker_context]
+symbol = ""
+style = "fg:color_docker"
+format = '([$symbol( $context )]($style))'
+
+[container]
+style = "fg:color_container"
+format = '([$symbol $name ]($style))'
+
+[jobs]
+symbol = ""
+style = "fg:color_other"
+format = '([$symbol( $number )]($style))'
+symbol_threshold = 1
+number_threshold = 1
+
+[time]
+disabled = true
+time_format = "%R"
+style = "fg:color_time"
+format = '([󰔛 $time]($style) )'
+
+[cmd_duration]
+min_time = 1
+format = '([󱫑 $duration ]($style))'
+style = 'fg:color_duration'
+show_milliseconds = true
+disabled = false
+
+[status]
+disabled = false
+format = '([$symbol( $common_meaning)( $signal_name)]($style))'
+map_symbol = true
+pipestatus = true
+symbol = ''
+success_symbol = ''
+not_executable_symbol = ''
+not_found_symbol = ''
+sigint_symbol = '󰐊'
+signal_symbol = '󱐋'
+style = 'bold fg:color_warning'
+success_style = 'bold fg:color_ok'
+failure_style = 'bold fg:color_danger'
+recognize_signal_code = true
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:color_ok)'
+error_symbol = '[❯](bold fg:color_danger)'
+vimcmd_symbol = '[❮](bold fg:color_vimcmd_ok)'
+vimcmd_replace_one_symbol = '[❮](bold fg:color_vimcmd_replace)'
+vimcmd_replace_symbol = '[❮](bold fg:color_vimcmd_replace)'
+vimcmd_visual_symbol = '[❮](bold fg:color_vimcmd_visual)'

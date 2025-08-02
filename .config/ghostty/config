@@ -1,0 +1,10 @@
+background-opacity = 0.95
+font-family = FiraCode Nerd Font
+font-size = 13
+quit-after-last-window-closed = true
+# theme = AdventureTime
+theme = catppuccin-mocha
+# theme = Dracula
+# theme = tokionight
+window-width = 120
+window-height = 30

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "style": "plain",
+          "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
+          "foreground": "p:os",
+          "type": "os"
+        },
+        {
+          "properties": {
+            "mapped_shell_names": {
+              "bash": "Bash",
+              "cmd": "Cmd",
+              "powershell": "Shell",
+              "pwsh": "Shell"
+            }
+          },
+          "style": "plain",
+          "template": "\ue7a2 {{ .Name }} ",
+          "foreground": "#E5C07B",
+          "type": "shell"
+        },
+        {
+          "style": "plain",
+          "template": "$",
+          "foreground": "#E5C07B",
+          "type": "text"
+        },
+        {
+          "style": "plain",
+          "template": "{{ .UserName }}:",
+          "foreground": "#E5C07B",
+          "type": "session"
+        },
+        {
+          "properties": {
+            "folder_separator_icon": "/",
+            "style": "full"
+          },
+          "style": "plain",
+          "template": " \uf07b {{ .Path }}",
+          "foreground": "#62c0ff",
+          "type": "path"
+        },
+        {
+          "properties": {
+            "branch_icon": "\ue725 ",
+            "branch_max_length": 25,
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "status_formats": {
+              "Added": " \uf457 %d",
+              "Deleted": " <#ff4500>\uf507 %d</>",
+              "Modified": " <#62c0ff>\uf459 %d</>",
+              "Unmerged": " \uebab %d",
+              "Untracked": " <#98C379>\uf4e8 %d</>"
+            }
+          },
+          "style": "plain",
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf147 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf196 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "foreground": "#F34C27",
+          "type": "git"
+        },
+        {
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "plain",
+          "template": "<#E5C07B>via</> \ued0d {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
+          "foreground": "#80BD03",
+          "type": "node"
+        },
+        {
+          "style": "plain",
+          "template": "<#E5C07B>via</> \ue73c {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
+          "foreground": "#FFE66C",
+          "type": "python"
+        },
+        {
+          "style": "plain",
+          "template": "<#E5C07B>via</> {{ if .Unsupported }}\uf071{{ else }}.NET v{{ .Full }}{{ end }} ",
+          "foreground": "#512BD4",
+          "type": "dotnet"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "style": "plain",
+          "template": "!",
+          "foreground": "#E06C75",
+          "type": "root"
+        },
+        {
+          "style": "plain",
+          "template": "❯",
+          "foreground": "#E5C07B",
+          "type": "text"
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}

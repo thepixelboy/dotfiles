@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "disable_ai": false,
   "autosave": {
     "after_delay": {
       "milliseconds": 1000
@@ -30,7 +31,7 @@
     "current_line_highlight": null
   },
   "restore_on_startup": "last_session",
-  "theme": "Catppuccin Mocha",
+  "theme": "Catppuccin Mocha - No Italics",
   "ui_font_size": 14,
   "ui_font_family": "FiraCode Nerd Font",
   "telemetry": {

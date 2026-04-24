@@ -1,58 +1,32 @@
 format = """\
-[╭╴](fg:style)\
+[╭╴](fg:os)\
 $os\
 $username\
-$git_branch\
-$git_status\
 $shell\
 (\
     $directory\
 )\
-$cmd_duration\
 (\
-    using \
+    $git_branch\
+    $git_status\
+)\
+(\
     $dotnet\
     $lua\
     $nodejs\
     $php\
     $python\
     $ruby\
-)
-[╰─](fg:style)$character\
+)\
+$cmd_duration
+[╰─](fg:os)$character\
 """
 add_newline = true
 palette = "normal"
 
-[palettes.normal]
-shell = "#29DBF2"
-os = "#16f4d0"
-os_admin = "#e4ff1a"
-directory = "#9ffff5"
-time = "#bdfffd"
-git = "#f17f29"
-git_status = "#DFEBED"
-
-dotnet = "#512bd4"
-lua = "#000080"
-node = "#417e38"
-php = "#4F5B93"
-python = "#ffd343"
-rails = "#D30001"
-
-duration = "#ce4257"
-text_color = "#EDF2F4"
-text_light = "#26272A"
-
-[username]
-style_user = "bold os"
-style_root = "bold os_admin"
-format = " [$user](fg:$style) "
-disabled = false
-show_always = true
-
 [os]
 disabled = false
-style = "bg:red fg:crust"
+style = "fg:$os"
 
 [os.symbols]
 Alpine = ""
@@ -80,6 +54,13 @@ Ubuntu = "󰕈"
 Unknown = "󰆍"
 Windows = "󰍲"
 
+[username]
+style_user = "bold user"
+style_root = "bold user_root"
+format = " [$user](fg:$style) "
+disabled = false
+show_always = true
+
 [shell]
 disabled = false
 format = '[ $indicator: ]($style)'
@@ -97,15 +78,6 @@ nu_indicator = "nu"
 unknown_indicator = ""
 style = "fg:shell"
 
-[character]
-disabled = false
-success_symbol = "[❯](bold fg:style)"
-error_symbol = "[❯](bold fg:red)"
-vimcmd_symbol = "[❮](bold fg:style)"
-vimcmd_replace_one_symbol = "[❮](bold fg:lavender)"
-vimcmd_replace_symbol = "[❮](bold fg:lavender)"
-vimcmd_visual_symbol = "[❮](bold fg:yellow)"
-
 [directory]
 format = "[at]($style) [$path](bold $style)[$read_only]($read_only_style) "
 truncation_length = 3
@@ -118,24 +90,12 @@ truncate_to_repo = false
 read_only ="  "
 home_symbol = ""
 
-[time]
-disabled = true
-format = "at [󱑈 $time]($style)"
-time_format = "%H:%M"
-style = "bold fg:time"
-
-[cmd_duration]
-format = "took [󱫑 $duration]($style) "
-style = "bold fg:duration"
-min_time = 500
-
 [git_branch]
 format = "[$symbol $branch]($style) "
 style = "bold fg:git"
 symbol = ""
 
 [git_status]
-# format = "[ $all_status$ahead_behind ]($style)"
 format = '([$ahead_behind]($style) )([$all_status]($style) )'
 style = "fg:git"
 stashed = "*${count}"
@@ -151,16 +111,6 @@ staged = "+${count}"
 untracked = "?${count}"
 ignore_submodules = false
 disabled = false
-
-[docker_context]
-disabled=true
-symbol = " "
-
-[package]
-disabled=true
-
-[fill]
-symbol = " "
 
 [dotnet]
 disabled =  false
@@ -201,3 +151,97 @@ format = "[](fg:rails)[$symbol( $version)]($style)[](fg:rails)"
 style = "bg:rails fg:text_color"
 symbol = ""
 version_format = "${raw}"
+
+[cmd_duration]
+format = " [󱫑 $duration]($style) "
+style = "bold fg:duration"
+min_time = 1
+disabled = false
+
+[character]
+disabled = false
+success_symbol = "[❯](bold fg:style)"
+error_symbol = "[❯](bold fg:red)"
+vimcmd_symbol = "[❮](bold fg:style)"
+vimcmd_replace_one_symbol = "[❮](bold fg:lavender)"
+vimcmd_replace_symbol = "[❮](bold fg:lavender)"
+vimcmd_visual_symbol = "[❮](bold fg:yellow)"
+
+[fill]
+symbol = " "
+
+[time]
+disabled = true
+format = "at [󱑈 $time]($style)"
+time_format = "%H:%M"
+style = "bold fg:time"
+
+[docker_context]
+disabled=true
+symbol = " "
+
+[package]
+disabled=true
+
+[palettes.gruvbox_dark]
+color_fg0 = '#fbf1c7'
+color_bg1 = '#3c3836'
+color_bg3 = '#665c54'
+color_blue = '#458588'
+color_aqua = '#689d6a'
+color_green = '#98971a'
+color_orange = '#d65d0e'
+color_purple = '#b16286'
+color_red = '#cc241d'
+color_yellow = '#d79921'
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+orange = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
+[palettes.normal]
+style = "#cdd6f4"
+os = "#cdd6f4"
+user = "#89b4fa"
+user_root = "#f38ba8"
+shell = "#a6adc8"
+directory = "#fab387"
+git = "#94e2d5"
+git_status = "#94e2d5"
+
+dotnet = "#512bd4"
+lua = "#000080"
+node = "#417e38"
+php = "#4F5B93"
+python = "#ffd343"
+rails = "#D30001"
+
+duration = "#7f849c"
+text_color = "#cdd6f4"
+text_light = "#7f849c"
+
+time = "#b4befe"

@@ -8,3 +8,4 @@ theme = Catppuccin Mocha
 # theme = tokionight
 window-width = 120
 window-height = 30
+term = xterm-256color

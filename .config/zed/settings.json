@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "cli_default_open_behavior": "existing_window",
   "project_panel": {
     "dock": "left"
   },
@@ -33,7 +34,7 @@
   "base_keymap": "VSCode",
   "buffer_font_family": "FiraCode Nerd Font",
   "buffer_font_size": null,
-  "icon_theme": "Catppuccin Mocha",
+  "icon_theme": "Colored Zed Icons Theme Dark",
   "indent_guides": {
     "enabled": true,
     "line_width": 1,
@@ -48,7 +49,7 @@
     "current_line_highlight": null
   },
   "restore_on_startup": "last_session",
-  "theme": "Catppuccin Mocha - No Italics",
+  "theme": "Catppuccin Frappé",
   "ui_font_size": 14,
   "ui_font_family": "FiraCode Nerd Font",
   "telemetry": {
